@@ -1,7 +1,7 @@
 extends Node
 
 
-var PORT = 4545
+var PORT = 4547
 
 func _ready():
 	print("start main")
@@ -37,11 +37,11 @@ func _ready():
 #	current_map_reply("hub.tscn")
 #	initialize_persistent_ui()
 
-func start_joining(server):
-	print("starting join on port %d" % PORT)
+func start_joining(server_address: String, port: int = PORT):
+	print("starting join on port %d" % port)
 	multiplayer.multiplayer_peer = null
 	var peer = ENetMultiplayerPeer.new()
-	peer.create_client(server, PORT)
+	peer.create_client(server_address, port)
 	multiplayer.multiplayer_peer = peer
  
 func spawn_player(peer_id: int):
